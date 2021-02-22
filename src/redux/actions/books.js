@@ -2,8 +2,8 @@
 const BOOKS = '[Books]';
 
 // action_types;
-export const FETCH_BOOKS = 'FETCH_BOOKS';
-export const SET_BOOKS = 'SET_BOOKS';
+export const FETCH_BOOKS = `${BOOKS} FETCH`;
+export const SET_BOOKS = `${BOOKS} SET`;
 
 //action creators
 export const fetchBooks = ({ query }) => ({
