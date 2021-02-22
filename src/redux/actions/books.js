@@ -1,5 +1,5 @@
 //feature name
-const BOOKS = '[Books]';
+export const BOOKS = '[Books]';
 
 // action_types;
 export const FETCH_BOOKS = `${BOOKS} FETCH`;

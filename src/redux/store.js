@@ -1,10 +1,30 @@
-import { compose, createStore } from 'redux';
 import { DevTools } from '../ui/DevTool';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { booksReducer } from './reducers/books';
+import { booksMiddleware } from './middleware/books';
+import { apiMiddleware } from './middleware/api';
+import { uiReducer } from './reducers/ui';
+import { notificationsReducer } from './reducers/notification';
 
-const enhancer = compose(DevTools.instrument());
+// shape the state structure
+const rootReducer = combineReducers({
+  books: booksReducer,
+  ui: uiReducer,
+  notification: notificationsReducer,
+});
 
-export const store = createStore(
-  state => state,
-  { message: 'thinking in redux' },
-  enhancer
+// create the feature middleware array
+const featureMiddleware = [booksMiddleware];
+
+// create the core middleware array
+const coreMiddleware = [apiMiddleware];
+
+// compose the middleware with additional (optional) enhancers,
+// DevTools.instrument() will enable dev tools integration
+const enhancer = compose(
+  applyMiddleware(...featureMiddleware, ...coreMiddleware),
+  DevTools.instrument()
 );
+
+// create and configure the store
+export const store = createStore(rootReducer, {}, enhancer);
