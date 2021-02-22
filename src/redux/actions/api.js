@@ -1,6 +1,3 @@
-//feature name
-const BOOKS = '[Books]';
-
 // action_types;
 const API_SUCCESS = 'API_SUCCESS';
 const API_ERROR = 'API_ERROR';
