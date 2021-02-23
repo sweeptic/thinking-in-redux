@@ -26,7 +26,7 @@ export const booksMiddleware = () => next => action => {
       break;
 
     case `${BOOKS} ${API_SUCCESS}`:
-      next(setBooks({ books: action.payload.items }));
+      next(setBooks({ books: action.payload.items, normalizeKey: 'id' }));
       next(setLoader({ state: false, feature: BOOKS }));
       break;
 
