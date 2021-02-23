@@ -12,7 +12,6 @@ export const normalizeMiddleware = ({ dispatch }) => next => action => {
   // content-aware filtering:
 
   if (action.type.includes('SET') && action.meta.normalizeKey) {
-    console.log(action.type);
     // notify about the transformation
     dispatch(dataNormalized({ feature: action.meta.feature }));
 

@@ -10,6 +10,7 @@ import { notificationMiddleware } from './middleware/notification';
 import { loggerMiddleware } from './middleware/logger';
 import { actionSplitterMiddleware } from './middleware/actionSplitter';
 import { undoable } from './reducers/undoable';
+import { stateFreezer } from './reducers/stateFreezer';
 
 // shape the state structure
 const rootReducer = combineReducers({
@@ -38,4 +39,4 @@ const enhancer = compose(
 );
 
 // create and configure the store
-export const store = createStore(rootReducer, {}, enhancer);
+export const store = createStore(stateFreezer(rootReducer), {}, enhancer);
