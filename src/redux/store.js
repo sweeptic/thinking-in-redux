@@ -6,6 +6,7 @@ import { apiMiddleware } from './middleware/api';
 import { uiReducer } from './reducers/ui';
 import { notificationsReducer } from './reducers/notification';
 import { normalizeMiddleware } from './middleware/normalize';
+import { notificationMiddleware } from './middleware/notification';
 
 // shape the state structure
 const rootReducer = combineReducers({
@@ -18,7 +19,11 @@ const rootReducer = combineReducers({
 const featureMiddleware = [booksMiddleware];
 
 // create the core middleware array
-const coreMiddleware = [apiMiddleware, normalizeMiddleware];
+const coreMiddleware = [
+  apiMiddleware,
+  normalizeMiddleware,
+  notificationMiddleware,
+];
 
 // compose the middleware with additional (optional) enhancers,
 // DevTools.instrument() will enable dev tools integration
