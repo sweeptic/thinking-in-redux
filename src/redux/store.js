@@ -8,6 +8,7 @@ import { notificationsReducer } from './reducers/notification';
 import { normalizeMiddleware } from './middleware/normalize';
 import { notificationMiddleware } from './middleware/notification';
 import { loggerMiddleware } from './middleware/logger';
+import { actionSplitterMiddleware } from './middleware/actionSplitter';
 
 // shape the state structure
 const rootReducer = combineReducers({
@@ -21,6 +22,7 @@ const featureMiddleware = [booksMiddleware];
 
 // create the core middleware array
 const coreMiddleware = [
+  actionSplitterMiddleware,
   apiMiddleware,
   normalizeMiddleware,
   notificationMiddleware,

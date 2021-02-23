@@ -14,25 +14,34 @@ export const booksMiddleware = () => next => action => {
   switch (action.type) {
     case FETCH_BOOKS:
       //split the command into two actions
-      next(
+
+      next([
         apiRequest({
           body: null,
           method: 'GET',
           url: BOOKS_URL,
           feature: BOOKS,
-        })
-      );
-      next(setLoader({ state: true, feature: BOOKS }));
+        }),
+
+        setLoader({ state: true, feature: BOOKS }),
+      ]);
+
       break;
 
     case `${BOOKS} ${API_SUCCESS}`:
-      next(setBooks({ books: action.payload.items, normalizeKey: 'id' }));
-      next(setLoader({ state: false, feature: BOOKS }));
+      next([
+        setBooks({ books: action.payload.items, normalizeKey: 'id' }),
+
+        setLoader({ state: false, feature: BOOKS }),
+      ]);
       break;
 
     case `${BOOKS} ${API_ERROR}`:
-      next(setNotification({ message: action.payload, feature: BOOKS }));
-      next(setLoader({ state: false, feature: BOOKS }));
+      next([
+        setNotification({ message: action.payload, feature: BOOKS }),
+        setLoader({ state: false, feature: BOOKS }),
+      ]);
+
       break;
   }
 };
