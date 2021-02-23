@@ -10,8 +10,10 @@ export const booksMiddleware = () => next => action => {
   // statement). We do this to keep our action log in order.
   next(action);
 
+  // switch - action filtering
   switch (action.type) {
     case FETCH_BOOKS:
+      //split the command into two actions
       next(
         apiRequest({
           body: null,
