@@ -1,4 +1,4 @@
-import { API_REQUEST, apiError, apiSuccess } from '../actions/api';
+import { API_REQUEST, apiError, apiSuccess } from '../../actions/api';
 
 // The API middleware is generic and reusable.
 // 2. The API middleware has only one responsibility.

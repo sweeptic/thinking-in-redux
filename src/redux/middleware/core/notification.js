@@ -2,7 +2,7 @@ import {
   removeNotification,
   SET_NOTIFICATION,
   setNotification,
-} from '../actions/notification';
+} from '../../actions/notification';
 
 export const notificationMiddleware = () => next => action => {
   if (action.type.includes(SET_NOTIFICATION)) {
