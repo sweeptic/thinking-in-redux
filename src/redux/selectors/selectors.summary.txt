@@ -1,0 +1,5 @@
+You can think of a selector as a read-only query to a database. Because selectors can’t change the
+state, they won’t damage your single source of truth.
+It is a good practice to create as many selectors as needed to produce optimized data structures for
+view rendering, and keep the UI components stateless and clean. If you are doing heavy calculations
+or transforming large data structures, use memoized selectors for performance.
