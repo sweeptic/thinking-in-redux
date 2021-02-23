@@ -6,6 +6,8 @@ import { setNotification } from '../actions/notification';
 const BOOKS_URL = 'https://www.googleapis.com/books/v1/volumes?q=redux';
 
 export const booksMiddleware = () => next => action => {
+  // We are calling next in the first line of our middleware body, before the action filtering (the switch
+  // statement). We do this to keep our action log in order.
   next(action);
 
   switch (action.type) {
