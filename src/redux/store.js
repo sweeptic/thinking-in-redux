@@ -7,6 +7,7 @@ import { uiReducer } from './reducers/ui';
 import { notificationsReducer } from './reducers/notification';
 import { normalizeMiddleware } from './middleware/normalize';
 import { notificationMiddleware } from './middleware/notification';
+import { loggerMiddleware } from './middleware/logger';
 
 // shape the state structure
 const rootReducer = combineReducers({
@@ -23,6 +24,7 @@ const coreMiddleware = [
   apiMiddleware,
   normalizeMiddleware,
   notificationMiddleware,
+  loggerMiddleware,
 ];
 
 // compose the middleware with additional (optional) enhancers,
