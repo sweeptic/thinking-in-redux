@@ -4,6 +4,9 @@ export const BOOKS = '[Books]';
 // action_types;
 export const FETCH_BOOKS = `${BOOKS} FETCH`;
 export const SET_BOOKS = `${BOOKS} SET`;
+export const UPDATE_BOOKS = `${BOOKS} UPDATE`;
+export const SELECT_BOOKS = `${BOOKS} SELECT`;
+export const REMOVE_BOOKS = `${BOOKS} REMOVE`;
 export const UNDO = `UNDO`;
 
 //action creators
