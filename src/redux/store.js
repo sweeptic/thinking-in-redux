@@ -9,10 +9,11 @@ import { normalizeMiddleware } from './middleware/normalize';
 import { notificationMiddleware } from './middleware/notification';
 import { loggerMiddleware } from './middleware/logger';
 import { actionSplitterMiddleware } from './middleware/actionSplitter';
+import { undoable } from './reducers/undoable';
 
 // shape the state structure
 const rootReducer = combineReducers({
-  books: booksReducer,
+  books: undoable(booksReducer),
   ui: uiReducer,
   notification: notificationsReducer,
 });
@@ -26,7 +27,7 @@ const coreMiddleware = [
   apiMiddleware,
   normalizeMiddleware,
   notificationMiddleware,
-  loggerMiddleware,
+  // loggerMiddleware,
 ];
 
 // compose the middleware with additional (optional) enhancers,
